@@ -37,6 +37,7 @@ export class HomePage implements OnInit{
   showGrid(){
     this.showProductsList = true;
     this.showAddForm = false;
+    this.showUpdateForm=false;
     this.service.getProducts().subscribe({
       next : (data) =>{
         console.log("getProducts", data.result)
@@ -77,6 +78,7 @@ export class HomePage implements OnInit{
     this.service.updateProduct(this.updatedproduct).subscribe({
       next: (data)=>{
         console.log("data", data)
+        this.showGrid();
       },
       error : (err)=>{
         console.log("Error", err)

@@ -13,8 +13,97 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<!--------------------Add two buttons------------->
+<ion-button (click)="showForm()">Add Products</ion-button>
+<ion-button (click)="showGrid()">Get All Products</ion-button>
+<!--------------------Add product Form------------->
+<ion-content *ngIf="showAddForm">
+  <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Product Name</ion-label>
+      <ion-input type="text" formControlName="ProductName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Product Price</ion-label>
+      <ion-input type="text" formControlName="price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" >Product Quantity</ion-label>
+      <ion-input type="text" formControlName="quantity"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" >Product InStock</ion-label>
+      <ion-input type="text" formControlName="inStock"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit">Add Products</ion-button>
+  </form>
+</ion-content>
+
+<!-------------------- Get All Products ------------------------------>
+
+<ion-content *ngIf="showProductsList">
+  <ion-grid >
+    <ion-row>
+      <ion-col>No</ion-col>
+      <ion-col>Name</ion-col>
+      <ion-col>Price</ion-col>
+      <ion-col>Quantity</ion-col>
+      <ion-col>InStock</ion-col>
+      <ion-col>Action</ion-col>
+    </ion-row>
+      <ion-row *ngFor="let p of productList; index as i">
+        <ion-col>{{i + 1}}</ion-col>
+        <ion-col>{{p.ProductName}}</ion-col>
+        <ion-col>{{p.price}}</ion-col>
+        <ion-col>{{p.quantity}}</ion-col>
+        <ion-col>{{p.inStock}}</ion-col>
+        <ion-col size="3">
+          <ion-button class="round" color="warning" (click)="ShowUpdateForm(i)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button class="round" color="danger" (click)="DeleteForm(i)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<!-- ---------------------update Form------------------- -->
+
+
+<ion-content *ngIf="showUpdateForm">
+
+  <form [formGroup]="ProductForm" (ngSubmit)="onUpdateSubmit()">
+
+    <ion-item>
+      <ion-label position="floating">Product Name</ion-label>
+      <ion-input type="text" formControlName="ProductName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Product Price</ion-label>
+      <ion-input type="text" formControlName="price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" >Product Quantity</ion-label>
+      <ion-input type="text" formControlName="quantity"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" >Product InStock</ion-label>
+      <ion-input type="text" formControlName="inStock"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit">Update Products</ion-button>
+
+  </form>
+</ion-content>
+
 </ion-content>

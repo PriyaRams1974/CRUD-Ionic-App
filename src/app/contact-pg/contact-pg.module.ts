@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
+import { FormsModule } from '@angular/forms';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { IonicModule } from '@ionic/angular';
+
+import { ContactPgPageRoutingModule } from './contact-pg-routing.module';
+
+import { ContactPgPage } from './contact-pg.page';
 import {SharedcomponentModule} from '../sharedcomponent/sharedcomponent.module'
 
 @NgModule({
@@ -12,10 +14,9 @@ import {SharedcomponentModule} from '../sharedcomponent/sharedcomponent.module'
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    ReactiveFormsModule,
+    ContactPgPageRoutingModule,
     SharedcomponentModule
-  ],
-  declarations: [HomePage]
+    ],
+  declarations: [ContactPgPage]
 })
-export class HomePageModule {}
+export class ContactPgPageModule {}
